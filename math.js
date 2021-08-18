@@ -110,7 +110,7 @@ function sideAngleWithTrigFunc() {
             sol.innerHTML = radOne*180/Math.PI;
         } else {
             sol.style.color = '#ff0000';
-            sol.innerHTML = 'There is no x value to solve for!'
+            sol.innerHTML = 'There is no x value to solve for!';
         }
     } else if(a != '' && b != '' && B != '') {
         if(a === 'x') {
@@ -140,7 +140,7 @@ function sideAngleWithTrigFunc() {
             sol.innerHTML = radThree*180/Math.PI;
         } else {
             sol.style.color = '#ff0000';
-            sol.innerHTML = 'There is no x value to solve for!'
+            sol.innerHTML = 'There is no x value to solve for!';
         }
     } else if(a != '' && c != '' && B != '') {
         if(a === 'x') {
@@ -155,7 +155,7 @@ function sideAngleWithTrigFunc() {
             sol.innerHTML = radFour*180/Math.PI;
         } else {
             sol.style.color = '#ff0000';
-            sol.innerHTML = 'There is no x value to solve for!'
+            sol.innerHTML = 'There is no x value to solve for!';
         }
     } else if(b != '' && c != '' && A != '') {
         if(b === 'x') {
@@ -170,7 +170,7 @@ function sideAngleWithTrigFunc() {
             sol.innerHTML = radFive*180/Math.PI;
         } else {
             sol.style.color = '#ff0000';
-            sol.innerHTML = 'There is no x value to solve for!'
+            sol.innerHTML = 'There is no x value to solve for!';
         }
     } else if(b != '' && c != '' && B != '') {
         if(b === 'x') {
@@ -181,11 +181,11 @@ function sideAngleWithTrigFunc() {
             sol.innerHTML = b/Math.sin(angleBFromRadToDeg);
         } else if(B === 'x') {
             sol.style.color = '#000000';
-            var RadSix = Math.asin(b/c);
+            var radSix = Math.asin(b/c);
             sol.innerHTML = radSix*180/Math.PI;
         } else {
             sol.style.color = '#ff0000';
-            sol.innerHTML = 'There is no x value to solve for!'
+            sol.innerHTML = 'There is no x value to solve for!';
         }
     } else {
         sol.style.color = '#ff0000';
@@ -215,7 +215,7 @@ function parametrics() {
     sol = document.getElementById('parametrics-sol');
     if(x1 === '' || y1 === '' || t1 === '' || x2 === '' || y2 === '' || t2 === '') {
         sol.style.color = '#ff0000';
-        sol.innerHTML = 'Missing values'
+        sol.innerHTML = 'Missing values';
     } else if(t1 != 0) {
         sol.style.color = '#ff0000';
         sol.innerHTML = 'The time at the first point must be 0';
@@ -281,7 +281,7 @@ function quadratic() {
     sol = document.getElementById('quadratic-sol');
     if(a === '' || b === '' || c === '') {
         sol.style.color = '#ff0000';
-        sol.innerHTML = 'Missing Values'
+        sol.innerHTML = 'Missing Values';
     } else {
         sol.style.color = '#000000';
         sol1 = (-1*b + Math.sqrt(Math.pow(b, 2) - 4*a*c)) / (2*a);
@@ -300,6 +300,32 @@ function resetQuadratic() {
     document.getElementById('quadratic-sol').innerHTML = '';
 }
 
+//Power Rule of Derivative
+function pwrDerivative() {
+    var x, y, sol;
+    x = document.getElementById('x').value;
+    y = document.getElementById('y').value;
+    sol = document.getElementById('pwrDerivative-sol');
+    x = parseInt(x);
+    y = parseInt(y);
+    if(isNaN(x) === true || isNaN(y) === true) {
+        sol.style.color = '#ff0000';
+        sol.innerHTML = 'Missing Values';
+    } else {
+        sol.style.color = '#000000';
+        var exp = y-1;
+        exp = exp.toString();
+        sol.innerHTML = x*y+'x'+exp.sup();
+    }
+}
+
+function resetPwrDerivative() {
+    document.getElementById('x').value = '';
+    document.getElementById('y').value = '';
+    document.getElementById('pwrDerivative-sol').innerHTML = '';
+}
+
+
 //Advanced Circle Calculators
 function standEqOfCircle() {
     var h, k, r, sol;
@@ -310,10 +336,10 @@ function standEqOfCircle() {
     sol = document.getElementById('circleEquation-sol');
     if(h === '' || k === '' || r === '') {
         sol.style.color = '#ff0000';
-        sol.innerHTML = 'Missing Values'
+        sol.innerHTML = 'Missing Values';
     } else if(r < 0) {
         sol.style.color = '#ff0000';
-        sol.innerHTML = 'Radius Cannot Be Negative'
+        sol.innerHTML = 'Radius Cannot Be Negative';
     } else if(h < 0 && k > 0) {
         sol.style.color = '#000000';
         sol.innerHTML = 'Standard Equation: (x + ' + Math.abs(h) + ')' + superscript.sup() + ' + (y - ' + k + ')' + superscript.sup() +  ' = ' + Math.pow(r,2);
@@ -329,6 +355,7 @@ function standEqOfCircle() {
     }
 }
 
+//Look at this code later to make this a function   
 //Complicated Circle Calculators
 function completeSqrCircleEq() {
     var inp, sol;
@@ -336,10 +363,10 @@ function completeSqrCircleEq() {
     sol = document.getElementById('completeSqrCircleEq-sol');
     if(inp === '') {
         sol.style.color = '#ff0000';
-        sol.innerHTML = 'Please Enter an Equation'
+        sol.innerHTML = 'Please Enter an Equation';
     } else if(inp.indexOf(' ') >= 0) {
         sol.style.color = '#ff0000';
-        sol.innerHTML = 'Cannot Have Spaces'
+        sol.innerHTML = 'Cannot Have Spaces';
     } else {
         if(inp.indexOf('-') >= 0) {
             var arr = inp.split('-').join(',').split('+').join(',');
@@ -373,192 +400,4 @@ function resetStandEqOfCircle() {
 function resetcompleteSqrCircleEq() {
     document.getElementById('inp').value = '';
     document.getElementById('completeSqrCircleEq-sol').innerHTML = '';
-}
-//simple area
-
-//Area of Square
-function areaSquare() {
-    var s, sol;
-    s = document.getElementById('s').value;
-    sol = document.getElementById('area-square-sol');
-    if(s === '') {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'Missing values';
-    } else if(s === 0) {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'This square is nonexistent';
-    } else if(s < 0) {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'Side lengths can not be negative';
-    } else {
-        sol.style.color = '#000000';
-        sol.innerHTML = Math.pow(s, 2);
-    }
-}
-function resetAreaSquare() {
-    document.getElementById('s').value = '';
-    document.getElementById('area-square-sol').innerHTML = '';
-}
-
-//Area of Rectangle
-function areaRect() {
-    var l, w, sol;
-    l = document.getElementById('l').value;
-    w = document.getElementById('w').value;
-    sol = document.getElementById('area-rect-sol');
-    if(l === '' || w === '') {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'Missing values';
-    } else if(l === 0 || w === 0) {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'This rectangle is nonexistent';
-    } else if(l < 0 || w < 0) {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'Side lengths can not be negative';
-    } else {
-        sol.style.color = '#000000';
-        sol.innerHTML = l*w;
-    }
-}
-function resetAreaRect() {
-    document.getElementById('l').value = '';
-    document.getElementById('w').value = '';
-    document.getElementById('area-rect-sol').innerHTML = '';
-}
-
-//Area of Triangle
-function areaTriangle() {
-    var b, h, sol;
-    b = document.getElementById('b').value;
-    h = document.getElementById('h').value;
-    sol = document.getElementById('area-triangle-sol');
-    if(b === 0 || h === 0) {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'This triangle is nonexistent';
-    } else if(b < 0 || h < 0) {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'Side lengths can not be negative';
-    } else {
-        sol.style.color = '#000000';
-        sol.innerHTML = b*h/2;
-    }
-}
-function resetAreaTriangle() {
-    document.getElementById('b').value = '';
-    document.getElementById('h').value = '';
-    document.getElementById('area-triangle-sol').innerHTML = '';
-}
-
-//Area of Trapezoid
-function areaTrap() {
-    var b1, b2, h, sol;
-    b1 = document.getElementById('b1').value;
-    b2 = document.getElementById('b2').value;
-    h = document.getElementById('h').value;
-    sol = document.getElementById('area-trap-sol');
-    if(b1 === '' || b2 === '' || h === '') {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'Missing values';
-    } else if(b1 === 0 || b2 === 0 || h === 0) {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'This trapezoid is nonexistent';
-    } else if(b1 < 0 || b2 < 0 || h < 0) {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'Side lengths can not be negative';
-    } else {
-        sol.style.color = '#000000';
-        sol.innerHTML = (b1+b2)/2*h;
-    }
-}
-function resetAreaTrap() {
-    document.getElementById('b1').value = '';
-    document.getElementById('b2').value = '';
-    document.getElementById('h').value = '';
-    document.getElementById('area-trap-sol').innerHTML = '';
-}
-
-//Area of Circle
-function areaCircle() {
-    var r, sol;
-    r = document.getElementById('r').value;
-    sol = document.getElementById('area-circle-sol');
-    if(r === '') {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'Missing values';
-    } else if(r === 0) {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'This circle is nonexistent';
-    } else if(r < 0) {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'The radius can not be negative';
-    } else {
-        sol.style.color = '#000000';
-        sol.innerHTML = Math.PI*Math.pow(r, 2);
-    }
-}
-function resetAreaCircle() {
-    document.getElementById('r').value = '';
-    document.getElementById('area-circle-sol').innerHTML = '';
-}
-
-//surface area
-
-//Surface Area of Cube
-function surfaceCube() {
-    var s, sol;
-    s = document.getElementById('s').value;
-    sol = document.getElementById('surface-cube-sol');
-    if(s === '') {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'Missing values';
-    } else if(s === 0) {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'This cube is nonexistent';
-    } else if(s < 0) {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'Side lengths can not be negative';
-    } else {
-        sol.style.color = '#000000';
-        sol.innerHTML = Math.pow(s, 2)*6;
-    }
-}
-function resetSurfaceCube() {
-    document.getElementById('s').value = '';
-    document.getElementById('surface-cube-sol').innerHTML = '';
-}
-
-//Surface Area of Rectangle
-function surfaceRectP() {
-    var l, w, h, sol;
-    l = document.getElementById('l').value;
-    w = document.getElementById('w').value;
-    h = document.getElementById('h').value;
-    sol = document.getElementById('surface-rect-p-sol');
-    if(l === '' || w === '' || h === '') {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'Missing values';
-    } else if(l === 0 || w === 0 || h === 0) {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'This rectangular prism is nonexistent';
-    } else if(l < 0 || w < 0 || h < 0) {
-        sol.style.color = '#ff0000';
-        sol.innerHTML = 'Side lengths can not be negative';
-    } else {
-        sol.style.color = '#000000';
-        sol.innerHTML = Math.pow(s, 2)*6
-    }
-}
-function resetSurfaceRectP() {
-    document.getElementById('l').value = '';
-    document.getElementById('w').value = '';
-    document.getElementById('h').value = '';
-    document.getElementById('surface-rect-p-sol').innerHTML = '';
-}
-
-//Surface Area of Triangular Prism (INCOMPLETE)
-function surfaceTriangularP() {
-    var b, h, sol;
-    b = document.getElementById('b').value;
-    h = document.getElementById('h').value;
-    sol = document.getElementById('surface-triangular-p-sol');
 }
