@@ -311,8 +311,14 @@ function pwrDerivative() {
     if(isNaN(x) === true || isNaN(y) === true) {
         sol.style.color = '#ff0000';
         sol.innerHTML = 'Missing Values';
-    } else {
+    } else if(y === 2) {
         sol.style.color = '#000000';
+        sol.innerHTML = x*y + 'x';
+    } else if(y === 1) {
+        sol.innerHTML = x;
+    } else if(y === 0) {
+        sol.innerHTML = 0;
+    } else {
         var exp = y-1;
         exp = exp.toString();
         sol.innerHTML = x*y+'x'+exp.sup();
